@@ -1,0 +1,34 @@
+<app-header [text]="title" (onclick)="onChange($event)"></app-header>
+<!--The content below is only a placeholder and can be replaced.-->
+
+<ng-sidebar-container>
+
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="sidenavOpened" mode="push">
+    <app-sidenav></app-sidenav>
+  </ng-sidebar>
+
+  <div ng-sidebar-content mt-2 ml-4 mb-2 mr-4 class="mt-2 ml-4 mb-2 mr-4">
+    
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+    <!-- onKeyUp est la fonction décrite dans app.components.ts -->
+    <!-- <input type="text" (keyup)="onKeyUp($event)" [value]="age"> -->
+    <h2>Virtual Brain</h2>
+    <br>
+    <form (ngSubmit)="onSubmitPasswordVB()">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="form-group">
+            <label for="newPasswordVB">Enter new password</label>
+            <input type="password" [(ngModel)]="newPasswordVB" name="newPasswordVB" class="form-control" id="newPasswordVB" placeholder="New Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div> 
+    </form>
+      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  </div>
+
+</ng-sidebar-container>
