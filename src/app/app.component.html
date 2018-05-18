@@ -10,7 +10,7 @@
 
   <div ng-sidebar-content mt-2 ml-4 mb-2 mr-4 class="mt-2 ml-4 mb-2 mr-4">
     
-    <h1>
+    <h1 style="text-align: center">
       Welcome to {{ title }}!
     </h1>
     <!-- onKeyUp est la fonction décrite dans app.components.ts -->
@@ -28,7 +28,115 @@
         </div>
       </div> 
     </form>
+
+    <hr class="hr-primary"/>
+    
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-12">
+        <h2>VirtualLimb List</h2>
+        <br>
+
+        <form (ngSubmit)="onSubmitSubscribeVL()">
+        <table class="table" style="width:1000px">
+          <thead class="thead-light">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Ip</th>
+              <th>Area</th>
+              <th>Sub_area</th>
+              <th>Ssh_key</th>
+            </tr>
+          </thead>
+<!--           <tbody *ngFor="let elements in listLimb; let i  = index;"> -->
+          <tbody>
+            <tr *ngFor="let limb of listLimb">
+              <td>{{limb.id}}</td>
+              <td>{{limb.name}}</td>
+              <td>{{limb.ip}}</td>
+              <td>{{limb.area}}</td>
+              <td>{{limb.sub_area}}</td>
+              <td>{{limb.ssh_key}}</td>
+            </tr>
+            <!-- <form (ngSubmit)="onSubmitSubscribeVL()"> -->
+              <tr>
+                <td><button type="submit" class="btn btn-primary">Submit</button></td>
+                <td><input type="text" [(ngModel)]="newLimb.name" name="newVLName" class="form-control" id="newVLName" placeholder=" Name of new VirtualLimb"></td>       
+                <td><input type="text" [(ngModel)]="newLimb.ip" name="newVLIP" class="form-control" id="newVLIP" placeholder=" IP of new VirtualLimb"></td>
+                <td><input type="text" [(ngModel)]="newLimb.area" name="newVLArea" class="form-control" id="newVLArea" placeholder=" Area of new VirtualLimb"></td>
+                <td><input type="text" [(ngModel)]="newLimb.sub_area" name="newVLSubArea" class="form-control" id="newVLSubArea" placeholder=" SubArea of new VirtualLimb"></td>
+                <td><input type="text" [(ngModel)]="newLimb.ssh_key" name="newVLSshKey" class="form-control" id="newVLSshKey" placeholder=" SshKey of new VirtualLimb"></td>
+              </tr>
+
+            <!-- </form> -->
+          </tbody>
+
+        </table>
+        </form>
+      </div>
+    </div> 
+
+    <hr class="hr-primary"/>
+
+    <h2>Change VirtualLimb password</h2>
+    <br>
+
+    <form (ngSubmit)="onSubmitPasswordVL()">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="form-group">
+            <label for="idVL">Enter Id of VirtualLimb</label>
+            <input type="text" [(ngModel)]="selectedLimb.id" name="idVL" class="form-control" id="idVL" placeholder="Id of VirtualLimb" >
+          </div>
+          <div class="form-group">
+            <label for="newPasswordVL">Enter new password</label>
+            <input type="password" [(ngModel)]="selectedLimb.password" name="newPasswordVL" class="form-control" id="newPasswordVL" placeholder="New Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div> 
+    </form>
+    <!--
       <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    -->
+    <hr class="hr-primary"/>
+
+    <h2>Change VirtualLimb area</h2>
+    <br>
+
+    <form (ngSubmit)="onSubmitChangeAreaVL()">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="form-group">
+            <label for="idVL">Enter Id of VirtualLimb</label>
+            <input type="text" [(ngModel)]="LimbToUpdate.id" name="idVL" class="form-control" id="idVL" placeholder="Id of VirtualLimb" >
+          </div>
+          <div class="form-group">
+            <label for="newAreaVL">Enter new area</label>
+            <input type="text" [(ngModel)]="LimbToUpdate.area" name="newAreaVL" class="form-control" id="newAreaVL" placeholder="New Area">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div> 
+    </form>
+
+  <hr class="hr-primary"/>
+
+  <h2>VirtualLimb to delete</h2>
+  <br>
+  <form (ngSubmit)="onSubmitDeleteVL()">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-12">
+        <div class="form-group">
+          <label for="idVLToDel">Enter Id of VirtualLimb</label>
+          <input type="text" [(ngModel)]="idLimbToDelete" name="idVLToDel" class="form-control" id="idVLToDel" placeholder="Id of VirtualLimb" >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div> 
+  </form>
+
   </div>
+
 
 </ng-sidebar-container>
