@@ -48,8 +48,9 @@ export class AppComponent implements OnInit{
       },
       { observe: 'response' }
     ).subscribe(data => {
-      console.log(data.status);
-      console.log(data);
+      console.log("data.body[\"status\"]: " + data.body["status"]);
+      console.log("data.status: " + data.status);
+      //console.log(data);
       this.newPasswordVB="";
     });
   }
@@ -63,8 +64,9 @@ export class AppComponent implements OnInit{
       {observe: 'response'}
     ).subscribe(data => {
       this.listLimb = data.body;
-      console.log(data.status);
-      console.log(data.body);
+      console.log("data.body[\"status\"]: " + data.body["status"]);
+      console.log("data.status: " + data.status);
+      //console.log(data.body);
     });
     //this.listLimb = data.body;
   }
@@ -88,8 +90,11 @@ export class AppComponent implements OnInit{
       },
       { observe: 'response' }
     ).subscribe(data => {
-      console.log(data.status);
-      console.log(data);
+      //console.log(data.status);
+      //console.log(data);
+      console.log("data.body[\"status\"]: " + data.body["status"]);
+      console.log("data.status: " + data.status);
+      //console.log("data.body: " + data.body);
       this.selectedLimb.id = "";
       this.selectedLimb.password = "";
     });
@@ -112,8 +117,10 @@ export class AppComponent implements OnInit{
       },
       {observe: 'response'}
     ).subscribe(data => {
-      console.log(data.status);
-      console.log(data);
+      //console.log(data.status);
+      //console.log(data);
+      console.log("data.body[\"status\"]: " + data.body["status"]);
+      console.log("data.status: " + data.status);
       /* 
       this.newLimb.name = "";
       this.newLimb.ip = "";
@@ -137,8 +144,10 @@ export class AppComponent implements OnInit{
       url,
       {observe: 'response'}
     ).subscribe(data => {
-      console.log(data.status);
-      console.log(data);
+      //console.log(data.status);
+      //console.log(data);
+      console.log("data.body[\"status\"]: " + data.body["status"]);
+      console.log("data.status: " + data.status);
       console.log(this.idLimbToDelete);
     })
     //window.location.reload();
@@ -155,12 +164,14 @@ export class AppComponent implements OnInit{
       },
       {observe: 'response'}
     ).subscribe(data => {
-      console.log(data.status);
-      console.log(data);
+      //console.log(data.status);
+      //console.log(data);
+      console.log("data.body[\"status\"]: " + data.body["status"]);
+      console.log("data.status: " + data.status);
       this.LimbToUpdate.id="";
       this.LimbToUpdate.area="";
     })
-    //window.location.reload();
+    window.location.reload();
   }
 
 }
