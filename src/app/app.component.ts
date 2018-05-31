@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   age = 1;
   newPasswordVB='';
   listLimb:Object = null;
-  selectedLimb={id:"",password:""};
+  selectedLimb={id:"",password:"", currentpassword:""};
   newLimb={name:"",ip:"",area:"",sub_area:"",ssh_key:"",id:""}
   idLimbToDelete="";
   LimbToUpdate={id:"", area:""};
@@ -86,7 +86,8 @@ export class AppComponent implements OnInit{
       url,
       {
         id: this.selectedLimb.id,
-        password: this.selectedLimb.password
+        password: this.selectedLimb.password,
+        c_password: this.selectedLimb.currentpassword
       },
       { observe: 'response' }
     ).subscribe(data => {
@@ -97,6 +98,7 @@ export class AppComponent implements OnInit{
       //console.log("data.body: " + data.body);
       this.selectedLimb.id = "";
       this.selectedLimb.password = "";
+      this.selectedLimb.currentpassword="";
     });
   }
 
