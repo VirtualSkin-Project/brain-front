@@ -10,6 +10,7 @@ import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
 export class AppComponent implements OnInit{
   title = 'app';
   age = 1;
+  oldPasswordVB='';
   newPasswordVB='';
   listLimb:Object = null;
   selectedLimb={id:"",password:"", currentpassword:""};
@@ -44,6 +45,7 @@ export class AppComponent implements OnInit{
     this.http.put(
       'http://virtualskin.local:8080/brain/password',
       {
+        c_password: this.oldPasswordVB,
         password: this.newPasswordVB
       },
       { observe: 'response' }
@@ -51,6 +53,7 @@ export class AppComponent implements OnInit{
       console.log("data.body[\"status\"]: " + data.body["status"]);
       console.log("data.status: " + data.status);
       //console.log(data);
+      this.newPasswordVB="";
       this.newPasswordVB="";
     });
   }
